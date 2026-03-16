@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buon Compleanno, Bhavna! ✨</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Pinyon+Script&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Styling */
+        body, html { 
+            margin: 0; padding: 0; height: 100%; 
+            background: #050505; color: white; 
+            overflow: hidden; font-family: 'Playfair Display', serif; 
+        }
+
+        /* Cosmic Background Layer */
+        #particles-js { 
+            position: absolute; width: 100%; height: 100%; z-index: 1; 
+        }
+
+        /* Main Content Center */
+        .main-content { 
+            position: relative; z-index: 10; 
+            display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; 
+            height: 100vh; text-align: center; 
+            background: radial-gradient(circle, rgba(255, 77, 109, 0.15) 0%, transparent 70%); 
+        }
+
+        /* Italian Style Headings */
+        .italian-sub { 
+            font-size: 1.1rem; letter-spacing: 6px; 
+            opacity: 0.7; text-transform: uppercase; 
+            margin-bottom: 5px; font-weight: 300;
+        }
+
+        .bhavu-name { 
+            font-family: 'Pinyon Script', cursive; 
+            font-size: clamp(4rem, 15vw, 7rem); 
+            color: #ff4d6d; margin: 0; 
+            text-shadow: 0 0 25px rgba(255, 77, 109, 0.6); 
+        }
+
+        .message { 
+            font-size: 1.2rem; font-style: italic; 
+            max-width: 80%; line-height: 1.6; 
+            margin-top: 20px; opacity: 0.9;
+        }
+
+        /* Butterfly Styling */
+        .butterfly { 
+            position: absolute; font-size: 28px; 
+            pointer-events: none; z-index: 5;
+            animation: fly linear forwards; 
+        }
+
+        @keyframes fly { 
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translate(150px, -110vh) rotate(45deg); opacity: 0; } 
+        }
+
+        /* Music Button Styling */
+        #music-control {
+            position: fixed; bottom: 30px; right: 30px; 
+            z-index: 100; cursor: pointer; font-size: 35px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px; border-radius: 50%;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+            filter: drop-shadow(0 0 10px #ff4d6d);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 77, 109, 0.7); }
+            50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(255, 77, 109, 0.4); }
+            100% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 77, 109, 0.7); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <div class="main-content">
+        <p class="italian-sub">Per la mia bellissima,</p>
+        <h1 class="bhavu-name">Bhavuuuuu 💋</h1>
+        <p class="message">
+            Happy Birthday, Bhavna! <br> 
+            You are the galaxy in my dark sky, the most beautiful soul I've ever known. ✨💌
+        </p>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="aud.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="music-control" onclick="toggleMusic()">🎵</div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // 1. Floating Hearts Logic
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 45, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ff4d6d" },
+                "shape": { "type": "heart" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 7, "random": true },
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 2.5, "direction": "top", "random": true, "straight": false, "out_mode": "out" }
+            }
+        });
+
+        // 2. Floating Butterflies Logic
+        function createButterfly() {
+            const b = document.createElement('div');
+            b.innerHTML = '🦋';
+            b.className = 'butterfly';
+            b.style.left = Math.random() * 100 + "vw";
+            b.style.top = "105vh";
+            b.style.animationDuration = (Math.random() * 3 + 6) + "s";
+            document.body.appendChild(b);
+            setTimeout(() => b.remove(), 9000);
+        }
+        setInterval(createButterfly, 1200);
+
+        // 3. Music Player Logic
+        const audio = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('music-control');
+
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                musicBtn.innerHTML = '🎶';
+                musicBtn.style.animation = "pulse 2s infinite";
+            } else {
+                audio.pause();
+                musicBtn.innerHTML = '🎵';
+                musicBtn.style.animation = "none";
+            }
+        }
+    </script>
+</body>
+</html
